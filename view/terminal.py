@@ -39,13 +39,38 @@ def print_general_results(result, label):
 # |--------|------------|----------|
 # |   1    | Sidewinder | missile  |
 # \-----------------------------------/
-def print_table(table):
-    """Prints tabular data like above.
+def line_separator(row):
+    line = "|"
+    for i in range(len(row)):
+        line += "--------------|"
+    return line
 
-    Args:
-        table: list of lists - the table to print out
-    """
-    pass
+
+def header(file_name):
+    headers = file_name.HEADERS
+    line = "|"
+    for name in headers:
+        line += f"  {name:<12}|"
+    print(" /" + "-"*len(headers)*14 + " \\")
+    print(line)
+    print(line_separator(headers))
+
+
+def get_printable_line(row):
+    line = "|"
+    for cell in row:
+        line += f"  {cell:<12}|"
+    return line
+
+
+def print_table(table, file_name):
+    header(file_name)
+    for index in range(len(table)):
+        print(get_printable_line(table[index]))
+        if index == len(table)-1:
+            print(" \\" + "--------------"*len(table[index]) + " /")
+        else:
+            print(line_separator(table[index]))
 
 
 def get_input(label):

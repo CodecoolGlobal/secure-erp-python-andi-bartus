@@ -1,12 +1,21 @@
+import sys, os
+sys.path.append(os.getcwd())
 from model.crm import crm
 from view import terminal as view
 
 
 def list_customers():
-    view.print_error_message("Not implemented yet.")
+    table = crm.list_customers()
+    view.print_table(table, "crm.py")
+    #view.print_error_message("Not implemented yet.")
+
+
+list_customers()
 
 
 def add_customer():
+    new_customer = view.get_input()
+    crm.add_customer(new_customer)
     view.print_error_message("Not implemented yet.")
 
 
