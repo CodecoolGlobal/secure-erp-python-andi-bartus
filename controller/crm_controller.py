@@ -9,6 +9,7 @@ def list_customers():
     headers = crm.HEADERS
     view.print_table(table, headers)
     #view.print_error_message("Not implemented yet.")
+    
 
 
 list_customers()

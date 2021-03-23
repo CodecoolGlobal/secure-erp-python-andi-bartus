@@ -19,8 +19,7 @@ def add_customer(new_customer):
 
 
 def list_customers():
-    table = data_manager.read_table_from_file("crm.csv")
+    table = data_manager.read_table_from_file(DATAFILE)
     return table
-
 
 
