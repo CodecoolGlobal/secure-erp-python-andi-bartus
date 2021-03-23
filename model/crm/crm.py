@@ -14,8 +14,8 @@ from model import data_manager, util
 DATAFILE = "model/crm/crm.csv"
 HEADERS = ["id", "name", "email", "subscribed"]
 
-def add_customer(new_customer):
-    pass
+def add_customer(table):
+    data_manager.write_table_to_file(DATAFILE, table, separator=';')
 
 
 def list_customers():
