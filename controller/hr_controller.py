@@ -1,12 +1,20 @@
+import sys, os
+sys.path.append(os.getcwd())
 from model.hr import hr
 from view import terminal as view
 
 
 def list_employees():
+    table = hr.list_employees()
+    headers = hr.HEADERS
+    view.print_table(table, headers)
     view.print_error_message("Not implemented yet.")
 
 
+list_employees()
+
 def add_employee():
+
     view.print_error_message("Not implemented yet.")
 
 

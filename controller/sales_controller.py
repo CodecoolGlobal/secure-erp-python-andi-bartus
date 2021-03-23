@@ -1,9 +1,16 @@
+import sys, os
+sys.path.append(os.getcwd())
 from model.sales import sales
 from view import terminal as view
 
 
 def list_transactions():
+    table = sales.list_transactions()
+    headers = sales.HEADERS
+    view.print_table(table, headers)
     view.print_error_message("Not implemented yet.")
+
+list_transactions()
 
 
 def add_transaction():
