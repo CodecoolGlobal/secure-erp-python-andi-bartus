@@ -93,6 +93,7 @@ def get_inputs(labels):
         get_label = input(label + ': ')
         table.append(get_label)
     print(table)
+    return table
 
 
 def print_error_message(message):

@@ -22,4 +22,4 @@ def list_customers():
     table = data_manager.read_table_from_file(DATAFILE)
     return table
 
-
+print(list_customers())

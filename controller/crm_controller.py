@@ -18,6 +18,7 @@ def list_customers():
 def add_customer():
     labels = crm.HEADERS[1:]   
     table = view.get_inputs(labels)
+    print(table)
     crm.add_customer(table)
     
 add_customer()
