@@ -6,7 +6,8 @@ from view import terminal as view
 
 def list_customers():
     table = crm.list_customers()
-    view.print_table(table, "crm.py")
+    headers = crm.HEADERS
+    view.print_table(table, headers)
     #view.print_error_message("Not implemented yet.")
 
 

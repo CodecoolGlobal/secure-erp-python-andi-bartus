@@ -46,8 +46,8 @@ def line_separator(row):
     return line
 
 
-def header(file_name):
-    headers = file_name.HEADERS
+def header(HEADERS):
+    headers = HEADERS
     line = "|"
     for name in headers:
         line += f"  {name:<12}|"
@@ -63,8 +63,8 @@ def get_printable_line(row):
     return line
 
 
-def print_table(table, file_name):
-    header(file_name)
+def print_table(table, HEADERS):
+    header(HEADERS)
     for index in range(len(table)):
         print(get_printable_line(table[index]))
         if index == len(table)-1:
