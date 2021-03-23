@@ -6,9 +6,20 @@ Data table structure:
     - email (string)
     - subscribed (int): Is subscribed to the newsletter? 1: yes, 0: no
 """
-
+ 
 from model import data_manager, util
 
 
 DATAFILE = "model/crm/crm.csv"
 HEADERS = ["id", "name", "email", "subscribed"]
+
+def add_customer(new_customer):
+    pass
+
+
+def list_customers():
+    table = data_manager.read_table_from_file("crm.csv")
+    return table
+
+
+
