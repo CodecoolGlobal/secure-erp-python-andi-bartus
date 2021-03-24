@@ -1,6 +1,13 @@
 def print_menu(title, list_options):
-    """Prints options in standard menu format like this:
 
+    # print(title)
+    # for index in range(len(list_options))):
+    #     print(f'({index + 1}), {list_options[index]}')   
+    # print("(0) Exit program")
+
+
+    """Prints options in standard menu format like this:
+    print
     Main menu:
     (1) Store manager
     (2) Human resources manager
@@ -74,12 +81,13 @@ def print_table(table, file_name):
 
 
 def get_input(label):
+    option = input(label)
     """Gets single string input from the user.
 
     Args:
         label: str - the label before the user prompt
     """
-    pass
+    return option
 
 
 def get_inputs(labels):

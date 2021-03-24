@@ -20,11 +20,38 @@ def add_customer():
     new_data = view.get_inputs(labels)
     crm.add_customer_data(new_data)
     
-add_customer()
+# add_customer()
 
 
 def update_customer():
-    view.print_error_message("Not implemented yet.")
+    table = crm.list_customers()    
+    i_d = view.get_input("Please provide an ID: ")
+    while True:
+        for lst in table:
+            if lst[0] == i_d:
+                update_data = view.get_input("What do you want to update? 1: name | 2: e-mail | 3: subscribe status | 0: Exit  >  ")
+                if update_data == "1":
+                    name = view.get_input("New name >  ")
+                    lst[1] = name
+                if update_data == "2":
+                    e_mail = view.get_input("New e_mail >  ")
+                    lst[2] = e_mail
+                if update_data == "3":
+                    sub_status = view.get_input("New sunscribe status >  ")
+                    lst[3] = sub_status
+                if update_data == '0':
+                    display_menu()
+        crm.update_costumer(table)
+        again = view.get_input("Anything else to update? Y/N >  ").lower()
+        if again =='y':
+            True
+        else:
+            break
+    display_menu()
+    
+update_customer()     
+
+
 
 
 def delete_customer():

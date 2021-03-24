@@ -27,4 +27,9 @@ def list_customers():
     table = data_manager.read_table_from_file(DATAFILE)
     return table
 
+def update_costumer(table):
+    data_manager.write_table_to_file(DATAFILE, table)
+
+  
+            
 
