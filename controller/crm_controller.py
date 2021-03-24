@@ -8,6 +8,9 @@ init()
 
 def list_customers():
     os.system('clear')
+    view.print_message('------------------')
+    view.print_message('    Customers ')
+    view.print_message('------------------\n')
     table = crm.list_customers()
     headers = crm.HEADERS
     view.print_table(table, headers)
