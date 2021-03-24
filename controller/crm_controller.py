@@ -64,11 +64,14 @@ def delete_customer():
     
 
     
-delete_customer()
+#delete_customer()
 
 def get_subscribed_emails():
-    view.print_error_message("Not implemented yet.")
-
+    table = crm.list_customers()
+    subscribed_list = [lst[-2] for lst in table if lst[-1] == '1']
+    print('Emails: ' + ", ".join(subscribed_list))
+               
+get_subscribed_emails()
 
 def run_operation(option):
     if option == 1:
