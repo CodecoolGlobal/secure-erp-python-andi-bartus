@@ -17,10 +17,11 @@ def list_customers():
 
 def add_customer():
     labels = crm.HEADERS[1:]   
-    table = view.get_inputs(labels)
-    crm.add_customer(table)
+    new_data = view.get_inputs(labels)
+    crm.add_customer_data(new_data)
     
 add_customer()
+
 
 def update_customer():
     view.print_error_message("Not implemented yet.")
