@@ -18,12 +18,52 @@ def list_employees():
 #list_employees()
 
 def add_employee():
-
-    view.print_error_message("Not implemented yet.")
-
-
+    os.system('clear')
+    view.print_message('------------------')
+    view.print_message(' Add new customer')
+    view.print_message('------------------\n')
+    labels = hr.HEADERS[1:]   
+    new_data = view.get_inputs(labels)
+    hr.add_customer_data(new_data)
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
+    
+  
 def update_employee():
-    view.print_error_message("Not implemented yet.")
+    os.system('clear')
+    view.print_message('------------------')
+    view.print_message(' Update customer')
+    view.print_message('------------------\n')
+    table = hr.list_employees()    
+    i_d = view.get_input("Please provide an ID or exit > ")
+    if i_d == 'exit':
+        os.system('clear')
+           
+    else: 
+        while True:
+            for lst in table:
+                if lst[0] == i_d:
+                    update_data = view.get_input("\nWhat do you want to update? 1: name | 2: e-mail | 3: subscribe status | 0: Exit  >  ")
+                    if update_data == "1":
+                        name = view.get_input("\nNew name >  ")
+                        lst[1] = name
+                    if update_data == "2":
+                        e_mail = view.get_input("\nNew e_mail >  ")
+                        lst[2] = e_mail
+                    if update_data == "3":
+                        sub_status = view.get_input("\nNew sunscribe status >  ")
+                        lst[3] = sub_status
+                    if update_data == '0':
+                        display_menu()
+                            
+            hr.update_employee(table)
+            again = view.get_input("\nAnything else to update? Y/N >  ").lower()
+            if again =='y':
+                True
+            else:
+                break
+
+
 
 
 def delete_employee():
