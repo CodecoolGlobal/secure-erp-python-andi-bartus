@@ -83,8 +83,21 @@ def delete_employee():
     view.get_input('\nBack to menu press Enter')
     os.system('clear')
 
+def get_second(item):
+    return item[2]
+
 
 def get_oldest_and_youngest():
+    table = hr.list_employees()
+    sorted_table = sorted(table, key=get_second)
+    old_young = [sorted_table[0][1], sorted_table[-1][1]]
+    os.system('clear')
+    view.print_message('-----------------------')
+    view.print_message('Youngest:       Oldest:')    
+    #print(sorted_table[0][1] + ", " + sorted_table[-1][1])
+    print(f"{old_young[0]}             {old_young[1]}")
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
     
 
 
@@ -152,4 +165,6 @@ def menu():
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
+
+
 menu()
