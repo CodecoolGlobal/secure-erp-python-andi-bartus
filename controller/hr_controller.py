@@ -102,7 +102,12 @@ def get_oldest_and_youngest():
 
 
 def get_average_age():
-    view.print_error_message("Not implemented yet.")
+    table = hr.list_employees()
+    dates = [int(date[2][0:4]) for date in table]
+    average_ages = sum(dates)//len(dates)
+    average_age = 2021 - average_ages
+    print(average_age)
+
 
 
 def next_birthdays():
