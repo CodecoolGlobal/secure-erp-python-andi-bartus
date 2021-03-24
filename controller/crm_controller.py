@@ -25,7 +25,7 @@ def add_customer():
 
 def update_customer():
     table = crm.list_customers()    
-    i_d = view.get_input("Please provide an ID: ")
+    i_d = view.get_input("Please provide an ID > ")
     while True:
         for lst in table:
             if lst[0] == i_d:
@@ -49,14 +49,22 @@ def update_customer():
             break
     display_menu()
     
-update_customer()     
+#update_customer()     
 
 
 
 
 def delete_customer():
-    view.print_error_message("Not implemented yet.")
+    table = crm.list_customers()
+    i_d = view.get_input("ID > ")
+    for lst in table:
+        if lst[0] == i_d:
+            table.remove(lst)
+    crm.update_costumer(table)
+    
 
+    
+delete_customer()
 
 def get_subscribed_emails():
     view.print_error_message("Not implemented yet.")
