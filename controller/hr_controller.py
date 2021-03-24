@@ -67,11 +67,25 @@ def update_employee():
 
 
 def delete_employee():
-    view.print_error_message("Not implemented yet.")
+    os.system('clear')
+    view.print_message('------------------')
+    view.print_message(' Delete customer')
+    view.print_message('------------------\n')        
+    table = hr.list_employees()
+    i_d = view.get_input("Provide and ID or exit > ")
+    for lst in table:
+        if lst[0] == i_d:
+            table.remove(lst)
+        if i_d == 'exit':
+            os.system('clear')
+            display_menu()
+    hr.update_employee(table)
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
 
 
 def get_oldest_and_youngest():
-    view.print_error_message("Not implemented yet.")
+    
 
 
 def get_average_age():
@@ -134,7 +148,7 @@ def menu():
     while operation != '0':
         display_menu()
         try:
-            operation = view.get_input("Select an operation")
+            operation = view.get_input("Select an operation > ")
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
