@@ -2,16 +2,20 @@ import sys, os
 sys.path.append(os.getcwd())
 from model.hr import hr
 from view import terminal as view
+from colorama import*
 
 
 def list_employees():
+    os.system('clear')
     table = hr.list_employees()
     headers = hr.HEADERS
     view.print_table(table, headers)
-    view.print_error_message("Not implemented yet.")
+    view.get_input('\nBack to menu press Enter')
+    
+    
 
 
-list_employees()
+#list_employees()
 
 def add_employee():
 
@@ -72,17 +76,17 @@ def run_operation(option):
 
 
 def display_menu():
-    options = ["Back to main menu",
-               "List employees",
-               "Add new employee",
-               "Update employee",
-               "Remove employee",
-               "Oldest and youngest employees",
-               "Employees average age",
-               "Employees with birthdays in the next two weeks",
-               "Employees with clearance level",
-               "Employee numbers by department"]
-    view.print_menu("Human resources", options)
+    options = ["(0) Back to main menu",
+               "(1) List employees",
+               "(2) Add new employee",
+               "(3) Update employee",
+               "(4) Remove employee",
+               "(5) Oldest and youngest employees",
+               "(6) Employees average age",
+               "(7) Employees with birthdays in the next two weeks",
+               "(8) Employees with clearance level",
+               "(9) Employee numbers by department"]
+    view.print_menu("Human resources", options, Fore.LIGHTCYAN_EX)
 
 
 def menu():
@@ -94,3 +98,4 @@ def menu():
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
+menu()
