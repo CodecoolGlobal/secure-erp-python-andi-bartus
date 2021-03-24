@@ -47,7 +47,7 @@ def update_customer():
             True
         else:
             break
-    display_menu()
+    #display_menu()
     
 #update_customer()     
 
@@ -71,7 +71,7 @@ def get_subscribed_emails():
     subscribed_list = [lst[-2] for lst in table if lst[-1] == '1']
     print('Emails: ' + ", ".join(subscribed_list))
                
-get_subscribed_emails()
+#get_subscribed_emails()
 
 def run_operation(option):
     if option == 1:
@@ -91,12 +91,12 @@ def run_operation(option):
 
 
 def display_menu():
-    options = ["Back to main menu",
-               "List customers",
-               "Add new customer",
-               "Update customer",
-               "Remove customer",
-               "Subscribed customer emails"]
+    options = ["0 Back to main menu",
+               "1 List customers",
+               "2 Add new customer",
+               "3 Update customer",
+               "4 Remove customer",
+               "5 Subscribed customer emails"]
     view.print_menu("Customer Relationship Management", options)
 
 
@@ -105,7 +105,10 @@ def menu():
     while operation != '0':
         display_menu()
         try:
-            operation = view.get_input("Select an operation")
+            operation = view.get_input("Select an operation > ")
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
+
+
+menu()

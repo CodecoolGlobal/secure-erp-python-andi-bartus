@@ -1,6 +1,8 @@
 def print_menu(title, list_options):
 
-    # print(title)
+    print(title + '\n')
+    for element in list_options:
+        print(element + '\n')
     # for index in range(len(list_options))):
     #     print(f'({index + 1}), {list_options[index]}')   
     # print("(0) Exit program")
@@ -18,7 +20,7 @@ def print_menu(title, list_options):
         title (str): the title of the menu (first row)
         list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)
     """
-    pass
+    
 
 
 def print_message(message):
@@ -53,8 +55,8 @@ def line_separator(row):
     return line
 
 
-def header(file_name):
-    headers = file_name.HEADERS
+def header(HEADERS):
+    headers = HEADERS
     line = "|"
     for name in headers:
         line += f"  {name:<12}|"
@@ -70,8 +72,8 @@ def get_printable_line(row):
     return line
 
 
-def print_table(table, file_name):
-    header(file_name)
+def print_table(table, HEADERS):
+    header(HEADERS)
     for index in range(len(table)):
         print(get_printable_line(table[index]))
         if index == len(table)-1:
