@@ -1,6 +1,10 @@
-def print_menu(title, list_options):
+from colorama import*
+init()
 
-    print(title + '\n')
+def print_menu(title, list_options, color):
+    print(color +'\n----------------------------------')
+    print('\n' + title + '\n')
+    print('----------------------------------')
     for element in list_options:
         print(element + '\n')
     # for index in range(len(list_options))):
@@ -24,13 +28,8 @@ def print_menu(title, list_options):
 
 
 def print_message(message):
-    """Prints a single message to the terminal.
-
-    Args:
-        message: str - the message
-    """
-    pass
-
+    print(message)
+ 
 
 def print_general_results(result, label):
     """Prints out any type of non-tabular data.
