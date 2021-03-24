@@ -17,8 +17,8 @@ HEADERS = ["id", "name", "email", "subscribed"]
 def add_customer_data(new_data):
     table = data_manager.read_table_from_file(DATAFILE, separator=';')
     i_d = util.generate_id()
-    new_table = table + [new_data.insert(0, i_d)]
-
+    new_data.insert(0, i_d)
+    new_table = table + [new_data]
     data_manager.write_table_to_file(DATAFILE, new_table)
     return new_table
 
