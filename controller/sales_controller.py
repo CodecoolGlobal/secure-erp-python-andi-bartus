@@ -130,11 +130,12 @@ def get_biggest_revenue_product():
     view.get_input('\nBack to menu press Enter')
     os.system('clear')
 
-    
-    
+   
 
 
 def count_transactions_between():
+    table = sales.list_transactions()
+    labels = ['First year', 'Second year']
     view.print_error_message("Not implemented yet.")
 
 
@@ -166,7 +167,7 @@ def run_operation(option):
 
 
 def display_menu():
-    #os.system('clear')
+    os.system('clear')
     options = ["(0) Back to main menu",
                "(1) List transactions",
                "(2) Add new transaction",
