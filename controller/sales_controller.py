@@ -135,8 +135,15 @@ def get_biggest_revenue_product():
 
 def count_transactions_between():
     table = sales.list_transactions()
-    labels = ['First year', 'Second year']
-    view.print_error_message("Not implemented yet.")
+    labels = ['First date (yyyy-mm-dd)', 'Second date (yyyy-mm-dd)']
+    new_data = view.get_inputs(labels)
+    first_year = new_data[0]
+    second_year = new_data[1]
+    first_year = int(first_year.replace("-", ""))
+    second_year = int(second_year.replace("-", ""))
+    dates = [int(date[-1].replace("-", "")) for date in table]
+    result = [date for date in dates if first_year <= date and second_year >= date]
+    view.print_message(len(result))
 
 
 def sum_transactions_between():
@@ -191,4 +198,5 @@ def menu():
             view.print_error_message(err)
 
 
-menu()
+#menu()
+count_transactions_between()
