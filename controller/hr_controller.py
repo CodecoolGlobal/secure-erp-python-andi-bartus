@@ -202,6 +202,7 @@ def run_operation(option):
 
 
 def display_menu():
+    os.system('clear')
     options = ["(0) Back to main menu",
                "(1) List employees",
                "(2) Add new employee",
@@ -226,4 +227,3 @@ def menu():
             view.print_error_message(err)
 
 
-menu()
