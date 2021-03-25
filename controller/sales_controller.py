@@ -54,8 +54,8 @@ def update_transaction():
                         sub_status = view.get_input("\nNew price >  ")
                         lst[3] = sub_status
                     if update_data == "4":
-                        sub_status = view.get_input("\nNew date >  ")
-                        lst[4] = sub_status
+                        date= view.get_input("\nNew date >  ")
+                        lst[4] = date
                     if update_data == '0':
                         display_menu()
                             

@@ -57,8 +57,8 @@ def update_employee():
                         sub_status = view.get_input("\nNew department >  ")
                         lst[3] = sub_status
                     if update_data == "4":
-                        sub_status = view.get_input("\nNew clearance >  ")
-                        lst[3] = sub_status
+                        clear = view.get_input("\nNew clearance >  ")
+                        lst[4] = clear
                     if update_data == '0':
                         display_menu()
                             
