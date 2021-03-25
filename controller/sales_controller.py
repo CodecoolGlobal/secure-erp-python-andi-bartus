@@ -85,8 +85,22 @@ def delete_transaction():
     os.system('clear')
 
 
+def get_third(item):
+    return float(item[3])
+
+
 def get_biggest_revenue_transaction():
-    view.print_error_message("Not implemented yet.")
+    table = sales.list_transactions()
+    sorted_table = sorted(table, key=get_third)
+    headers = sales.HEADERS
+    #print(sorted_table[-1])
+    st = [sorted_table[-1]]
+    view.print_table(st, headers)
+    
+    
+    
+
+    
 
 
 def get_biggest_revenue_product():
@@ -125,7 +139,7 @@ def run_operation(option):
 
 
 def display_menu():
-    os.system('clear')
+    #os.system('clear')
     options = ["(0) Back to main menu",
                "(1) List transactions",
                "(2) Add new transaction",
