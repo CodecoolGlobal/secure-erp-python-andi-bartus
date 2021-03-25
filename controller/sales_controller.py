@@ -6,10 +6,15 @@ from colorama import*
 init()
 
 def list_transactions():
+    os.system('clear')
+    view.print_message('------------------')
+    view.print_message('  Transactions ')
+    view.print_message('------------------\n')
     table = sales.list_transactions()
     headers = sales.HEADERS
     view.print_table(table, headers)
-    
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
 
 
 def add_transaction():
@@ -144,3 +149,4 @@ def menu():
             view.print_error_message(err)
 
 
+menu()
