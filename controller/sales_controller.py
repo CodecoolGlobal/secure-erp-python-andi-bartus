@@ -141,7 +141,13 @@ def count_transactions_between():
 
 
 def sum_transactions_between():
-    
+    table = sales.list_transactions()
+    labels = ['First date (yyyy-mm-dd)', 'Second date (yyyy-mm-dd)']
+    new_data = view.get_inputs(labels)
+    dates_between = sales.find_dates_between(table, new_data)
+    view.print_message(sum([float(lst[3]) for lst in table if int(lst[-1].replace("-", "")) in dates_between]))
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
 
 
 def run_operation(option):
@@ -192,5 +198,4 @@ def menu():
             view.print_error_message(err)
 
 
-#menu()
-count_transactions_between()
+menu()
