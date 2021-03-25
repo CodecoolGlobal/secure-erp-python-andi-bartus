@@ -13,7 +13,15 @@ def list_transactions():
 
 
 def add_transaction():
-    view.print_error_message("Not implemented yet.")
+    os.system('clear')
+    view.print_message('-----------------')
+    view.print_message(' Add transaction')
+    view.print_message('-----------------\n')
+    labels = sales.HEADERS[1:]   
+    new_data = view.get_inputs(labels)
+    sales.add_transactions(new_data)
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear') 
 
 
 def update_transaction():
