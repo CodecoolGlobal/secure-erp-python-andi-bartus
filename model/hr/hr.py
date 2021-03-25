@@ -70,4 +70,14 @@ def next_birthday(given_date, table):
                 result2.append(date)
                 result = result2
     return result
+
+ 
+def clearence_and_above(table, label):
+    number_of_employees = 0
     
+    for lst in table:
+        if lst[-1] >= label:
+            number_of_employees += 1
+    return number_of_employees
+        
+        

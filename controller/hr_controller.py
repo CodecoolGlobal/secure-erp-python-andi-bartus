@@ -147,7 +147,12 @@ def next_birthdays():
 
 
 def count_employees_with_clearance():
-    view.print_error_message("Not implemented yet.")
+    clearence_input = view.get_input("Clearence level > ")
+    table = hr.list_employees()
+    number_of_employees = hr.clearence_and_above(table, clearence_input)
+    view.print_message(number_of_employees)
+
+
 
 
 def count_employees_per_department():
