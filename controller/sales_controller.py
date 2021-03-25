@@ -2,15 +2,14 @@ import sys, os
 sys.path.append(os.getcwd())
 from model.sales import sales
 from view import terminal as view
-
+from colorama import*
+init()
 
 def list_transactions():
     table = sales.list_transactions()
     headers = sales.HEADERS
     view.print_table(table, headers)
-    view.print_error_message("Not implemented yet.")
-
-list_transactions()
+    
 
 
 def add_transaction():
@@ -65,16 +64,16 @@ def run_operation(option):
 
 
 def display_menu():
-    options = ["Back to main menu",
-               "List transactions",
-               "Add new transaction",
-               "Update transaction",
-               "Remove transaction",
-               "Get the transaction that made the biggest revenue",
-               "Get the product that made the biggest revenue altogether",
-               "Count number of transactions between",
-               "Sum the price of transactions between"]
-    view.print_menu("Sales", options)
+    options = ["(0) Back to main menu",
+               "(1) List transactions",
+               "(2) Add new transaction",
+               "(3) Update transaction",
+               "(4) Remove transaction",
+               "(5) Get the transaction that made the biggest revenue",
+               "(6) Get the product that made the biggest revenue altogether",
+               "(7) Count number of transactions between",
+               "(8) Sum the price of transactions between"]
+    view.print_menu("Sales", options, Fore.LIGHTCYAN_EX)
 
 
 def menu():
@@ -82,7 +81,10 @@ def menu():
     while operation != '0':
         display_menu()
         try:
-            operation = view.get_input("Select an operation")
+            operation = view.get_input("Select an operation > ")
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
+
+
+menu()
