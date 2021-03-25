@@ -7,6 +7,9 @@ from colorama import*
 
 def list_employees():
     os.system('clear')
+    view.print_message('------------------')
+    view.print_message('    Employees ')
+    view.print_message('------------------\n')
     table = hr.list_employees()
     headers = hr.HEADERS
     view.print_table(table, headers)
@@ -20,11 +23,11 @@ def list_employees():
 def add_employee():
     os.system('clear')
     view.print_message('------------------')
-    view.print_message(' Add new customer')
+    view.print_message(' Add new employee')
     view.print_message('------------------\n')
     labels = hr.HEADERS[1:]   
     new_data = view.get_inputs(labels)
-    hr.add_customer_data(new_data)
+    hr.add_employee_data(new_data)
     view.get_input('\nBack to menu press Enter')
     os.system('clear')
     
@@ -32,7 +35,7 @@ def add_employee():
 def update_employee():
     os.system('clear')
     view.print_message('------------------')
-    view.print_message(' Update customer')
+    view.print_message(' Update employee')
     view.print_message('------------------\n')
     table = hr.list_employees()    
     i_d = view.get_input("Please provide an ID or exit > ")
@@ -69,7 +72,7 @@ def update_employee():
 def delete_employee():
     os.system('clear')
     view.print_message('------------------')
-    view.print_message(' Delete customer')
+    view.print_message(' Delete employee')
     view.print_message('------------------\n')        
     table = hr.list_employees()
     i_d = view.get_input("Provide and ID or exit > ")
