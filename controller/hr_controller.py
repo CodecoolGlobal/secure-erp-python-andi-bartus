@@ -147,10 +147,16 @@ def next_birthdays():
 
 
 def count_employees_with_clearance():
+    os.system('clear')
+    view.print_message('----------------------------------------')
+    view.print_message(' Employees with at least clearance level')
+    view.print_message('----------------------------------------\n')  
     clearence_input = view.get_input("Clearence level > ")
     table = hr.list_employees()
     number_of_employees = hr.clearence_and_above(table, clearence_input)
     view.print_message(number_of_employees)
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
 
 
 
