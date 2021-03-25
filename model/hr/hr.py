@@ -31,3 +31,8 @@ def add_employee_data(new_data):
 
 def update_employee(table):
     data_manager.write_table_to_file(DATAFILE, table)
+
+
+
+def next_birthday(given_date):
+    pass

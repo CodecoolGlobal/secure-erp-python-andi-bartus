@@ -38,7 +38,7 @@ def update_employee():
     view.print_message(' Update employee')
     view.print_message('------------------\n')
     table = hr.list_employees()    
-    i_d = view.get_input("Please provide an ID or exit > ")
+    i_d = view.get_input(" ID or exit > ")
     if i_d == 'exit':
         os.system('clear')
            
@@ -91,6 +91,7 @@ def get_second(item):
 
 
 def get_oldest_and_youngest():
+    os.system('clear')
     table = hr.list_employees()
     sorted_table = sorted(table, key=get_second)
     old_young = [sorted_table[0][1], sorted_table[-1][1]]
@@ -105,6 +106,10 @@ def get_oldest_and_youngest():
 
 
 def get_average_age():
+    os.system('clear')
+    view.print_message('--------------------------')
+    view.print_message(' Average age of employees')
+    view.print_message('--------------------------\n')  
     import datetime
     now = datetime.datetime.now().year
     table = hr.list_employees()
@@ -112,11 +117,56 @@ def get_average_age():
     average_ages = sum(dates)//len(dates)
     average_age = now - average_ages
     print(average_age)
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
+    
+def is_leap_year(year):
+    return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
 
+
+def days_calculator(date, table):
+    year = int(date[0:4])
+    month = int(date[5:7])
+    day = int(date[-2:])
+    months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 30]
+    leap_months = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 30]
+    if is_leap_year(year) is True:
+        days = sum(leap_months[0:month-1]) + day
+    else:
+        days = sum(months[0:month -1]) + day       
+    return days
 
 
 def next_birthdays():
-    view.print_error_message("Not implemented yet.")
+    table = hr.list_employees()
+    given_date = view.get_input('\n Date: YYYY-MM-DD  >  ')
+    given_date_days = days_calculator(given_date, table)
+    birthdays = [item[2] for item in table]
+    for date in birthdays:      
+        birth_days = days_calculator(date, table)
+        diff =  birth_days - given_date_days
+        if diff <= 14 and diff >= 0:
+            print(date)
+            
+ 
+
+
+
+
+    
+next_birthdays()
+    
+    
+
+
+
+        
+
+
+
+    
+
+
 
 
 def count_employees_with_clearance():
@@ -177,4 +227,4 @@ def menu():
             view.print_error_message(err)
 
 
-menu()
+# menu()
