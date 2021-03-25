@@ -29,7 +29,7 @@ def add_employee():
     new_data = view.get_inputs(labels)
     hr.add_employee_data(new_data)
     view.get_input('\nBack to menu press Enter')
-    os.system('clear')
+    os.system('clear') 
     
   
 def update_employee():
