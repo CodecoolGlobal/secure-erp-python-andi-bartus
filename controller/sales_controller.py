@@ -90,21 +90,45 @@ def get_third(item):
 
 
 def get_biggest_revenue_transaction():
+    os.system('clear')
+    view.print_message('-------------------')
+    view.print_message(' Biggest revenue')
+    view.print_message('-------------------\n') 
+
     table = sales.list_transactions()
     sorted_table = sorted(table, key=get_third)
     headers = sales.HEADERS
     #print(sorted_table[-1])
     st = [sorted_table[-1]]
     view.print_table(st, headers)
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
     
     
     
-
-    
+   
 
 
 def get_biggest_revenue_product():
-    view.print_error_message("Not implemented yet.")
+    table = sales.list_transactions()
+    
+    product= {}
+    for lst in table:
+        if lst[2]  not in product.keys():
+            product[lst[2]] = 0
+        if lst[2] in product.keys():
+            product[lst[2]] += float(lst[3])
+    
+        
+    max_price = max(product.values())
+    for key, value in product.items():
+        if value == max_price:
+            view.print_message(f'\nBiggest revenue product is: {key}')
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
+
+    
+    
 
 
 def count_transactions_between():
