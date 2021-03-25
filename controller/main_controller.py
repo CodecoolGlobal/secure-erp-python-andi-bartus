@@ -18,14 +18,25 @@ def load_module(option):
 
 def display_menu():
     os.system('clear')
+    
     options = ["(0) Exit program",
                "(1) Customer Relationship Management (CRM)",
                "(2) Sales",
                "(3) Human Resources"]
+    print(Fore.BLUE +ascii_art)
     view.print_menu("Main menu", options, Fore.LIGHTCYAN_EX)
 
+ascii_art ='''
+ __    __   _______     ___   ____    ____  _______ .__   __.     _______ .______      .______   
+|  |  |  | |   ____|   /   \  \   \  /   / |   ____||  \ |  |    |   ____||   _  \     |   _  \  
+|  |__|  | |  |__     /  ^  \  \   \/   /  |  |__   |   \|  |    |  |__   |  |_)  |    |  |_)  | 
+|   __   | |   __|   /  /_\  \  \      /   |   __|  |  . `  |    |   __|  |      /     |   ___/  
+|  |  |  | |  |____ /  _____  \  \    /    |  |____ |  |\   |    |  |____ |  |\  \----.|  |      
+|__|  |__| |_______/__/     \__\  \__/     |_______||__| \__|    |_______|| _| `._____|| _|      
+'''
 
 def menu():
+    
     option = None
     while option != '0':
         display_menu()
