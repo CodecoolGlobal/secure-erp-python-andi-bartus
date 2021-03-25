@@ -91,10 +91,9 @@ def get_third(item):
 
 def get_biggest_revenue_transaction():
     os.system('clear')
-    view.print_message('-------------------')
-    view.print_message(' Biggest revenue')
-    view.print_message('-------------------\n') 
-
+    view.print_message('-----------------------------')
+    view.print_message(' Biggest revenue transaction')
+    view.print_message('-----------------------------\n') 
     table = sales.list_transactions()
     sorted_table = sorted(table, key=get_third)
     headers = sales.HEADERS
@@ -110,6 +109,10 @@ def get_biggest_revenue_transaction():
 
 
 def get_biggest_revenue_product():
+    os.system('clear')
+    view.print_message('---------------------------')
+    view.print_message(' Biggest revenue product ')
+    view.print_message('---------------------------\n') 
     table = sales.list_transactions()
     
     product= {}
