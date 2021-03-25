@@ -134,13 +134,23 @@ def get_biggest_revenue_product():
 
 
 def count_transactions_between():
+    os.system('clear')
+    view.print_message('-----------------------------------')
+    view.print_message(' Count transactions between 2 dates ')
+    view.print_message('-----------------------------------\n') 
     table = sales.list_transactions()
     labels = ['First date (yyyy-mm-dd)', 'Second date (yyyy-mm-dd)']
     new_data = view.get_inputs(labels)
     view.print_message(len(sales.find_dates_between(table, new_data)))
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
 
 
 def sum_transactions_between():
+    os.system('clear')
+    view.print_message('-----------------------------')
+    view.print_message(' Sum prices between 2 dates')
+    view.print_message('-----------------------------\n') 
     table = sales.list_transactions()
     labels = ['First date (yyyy-mm-dd)', 'Second date (yyyy-mm-dd)']
     new_data = view.get_inputs(labels)
@@ -198,4 +208,4 @@ def menu():
             view.print_error_message(err)
 
 
-menu()
+
