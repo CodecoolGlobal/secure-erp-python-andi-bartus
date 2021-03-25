@@ -25,11 +25,59 @@ def add_transaction():
 
 
 def update_transaction():
-    view.print_error_message("Not implemented yet.")
+    os.system('clear')
+    view.print_message('------------------')
+    view.print_message(' Update customer')
+    view.print_message('------------------\n')
+    table = sales.list_transactions()    
+    i_d = view.get_input("Please provide an ID or exit > ")
+    if i_d == 'exit':
+        os.system('clear')
+           
+    else: 
+        while True:
+            for lst in table:
+                if lst[0] == i_d:
+                    update_data = view.get_input("\nWhat do you want to update? 1: customer | 2: product | 3: price | 4: date | 0: Exit  >  ")
+                    if update_data == "1":
+                        name = view.get_input("\nNew customer >  ")
+                        lst[1] = name
+                    if update_data == "2":
+                        e_mail = view.get_input("\nNew product >  ")
+                        lst[2] = e_mail
+                    if update_data == "3":
+                        sub_status = view.get_input("\nNew price >  ")
+                        lst[3] = sub_status
+                    if update_data == "4":
+                        sub_status = view.get_input("\nNew date >  ")
+                        lst[4] = sub_status
+                    if update_data == '0':
+                        display_menu()
+                            
+            sales.update_transactions(table)
+            again = view.get_input("\nAnything else to update? Y/N >  ").lower()
+            if again =='y':
+                True
+            else:
+                break
 
 
 def delete_transaction():
-    view.print_error_message("Not implemented yet.")
+    os.system('clear')
+    view.print_message('------------------')
+    view.print_message(' Delete customer')
+    view.print_message('------------------\n')        
+    table = sales.list_transactions()
+    i_d = view.get_input("Provide and ID or exit > ")
+    for lst in table:
+        if lst[0] == i_d:
+            table.remove(lst)
+        if i_d == 'exit':
+            os.system('clear')
+            display_menu()
+    sales.update_transactions(table)
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
 
 
 def get_biggest_revenue_transaction():

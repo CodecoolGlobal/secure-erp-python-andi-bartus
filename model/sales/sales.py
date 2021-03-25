@@ -27,3 +27,7 @@ def add_transactions(new_data):
     new_table = table + [new_data]
     data_manager.write_table_to_file(DATAFILE, new_table)
     return new_table
+
+
+def update_transactions(table):
+    data_manager.write_table_to_file(DATAFILE, table)

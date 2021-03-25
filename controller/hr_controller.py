@@ -46,15 +46,18 @@ def update_employee():
         while True:
             for lst in table:
                 if lst[0] == i_d:
-                    update_data = view.get_input("\nWhat do you want to update? 1: name | 2: e-mail | 3: subscribe status | 0: Exit  >  ")
+                    update_data = view.get_input("\nWhat do you want to update? 1: name | 2: date of birth | 3: department | 4: clearance | 0: Exit  >  ")
                     if update_data == "1":
                         name = view.get_input("\nNew name >  ")
                         lst[1] = name
                     if update_data == "2":
-                        e_mail = view.get_input("\nNew e_mail >  ")
+                        e_mail = view.get_input("\nNew date of birth > ")
                         lst[2] = e_mail
                     if update_data == "3":
-                        sub_status = view.get_input("\nNew sunscribe status >  ")
+                        sub_status = view.get_input("\nNew department >  ")
+                        lst[3] = sub_status
+                    if update_data == "4":
+                        sub_status = view.get_input("\nNew clearance >  ")
                         lst[3] = sub_status
                     if update_data == '0':
                         display_menu()
