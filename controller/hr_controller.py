@@ -105,10 +105,12 @@ def get_oldest_and_youngest():
 
 
 def get_average_age():
+    import datetime
+    now = datetime.datetime.now().year
     table = hr.list_employees()
     dates = [int(date[2][0:4]) for date in table]
     average_ages = sum(dates)//len(dates)
-    average_age = 2021 - average_ages
+    average_age = now - average_ages
     print(average_age)
 
 
