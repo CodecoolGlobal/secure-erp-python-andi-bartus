@@ -31,3 +31,13 @@ def add_transactions(new_data):
 
 def update_transactions(table):
     data_manager.write_table_to_file(DATAFILE, table)
+
+
+def find_dates_between(table, new_data):
+    first_year = new_data[0]
+    second_year = new_data[1]
+    first_year = int(first_year.replace("-", ""))
+    second_year = int(second_year.replace("-", ""))
+    dates = [int(date[-1].replace("-", "")) for date in table]
+    result = [date for date in dates if first_year <= date and second_year >= date]
+    return result
