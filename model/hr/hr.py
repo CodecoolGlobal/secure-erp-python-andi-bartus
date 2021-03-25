@@ -32,7 +32,42 @@ def add_employee_data(new_data):
 def update_employee(table):
     data_manager.write_table_to_file(DATAFILE, table)
 
+def is_leap_year(year):
+    return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
 
 
-def next_birthday(given_date):
-    pass
+
+def days_calculator(date):
+    year = int(date[0:4])
+    month = int(date[5:7])
+    day = int(date[-2:])
+    months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 30]
+    leap_months = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 30]
+    if is_leap_year(year) is True:
+        days = sum(leap_months[0:month-1]) + day
+    else:
+        days = sum(months[0:month -1]) + day       
+    return days
+
+def next_birthday(given_date, table):
+    given_year = int(given_date[0:4])
+    given_date_days = days_calculator(given_date)
+    birthdays = [item[2] for item in table]
+    result1 = []
+    result2 = []
+    for date in birthdays:             
+        birth_days = days_calculator(date)
+        diff =  birth_days - given_date_days
+        
+        if birth_days <= 13:
+            given_date_days = given_date_days + birth_days   
+            if given_date_days - given_year <= 14:
+                result1.append(date)
+                result = result1
+            
+        else:
+            if diff <= 14 and diff >= 0:
+                result2.append(date)
+                result = result2
+    return result
+    

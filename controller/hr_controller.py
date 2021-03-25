@@ -98,7 +98,6 @@ def get_oldest_and_youngest():
     os.system('clear')
     view.print_message('-----------------------')
     view.print_message('Youngest:       Oldest:')    
-    #print(sorted_table[0][1] + ", " + sorted_table[-1][1])
     print(f"{old_young[0]}             {old_young[1]}")
     view.get_input('\nBack to menu press Enter')
     os.system('clear')
@@ -120,53 +119,31 @@ def get_average_age():
     view.get_input('\nBack to menu press Enter')
     os.system('clear')
     
-def is_leap_year(year):
-    return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
 
-
-def days_calculator(date, table):
-    year = int(date[0:4])
-    month = int(date[5:7])
-    day = int(date[-2:])
-    months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 30]
-    leap_months = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 30]
-    if is_leap_year(year) is True:
-        days = sum(leap_months[0:month-1]) + day
-    else:
-        days = sum(months[0:month -1]) + day       
-    return days
 
 
 def next_birthdays():
+    os.system('clear')
+    view.print_message('--------------------------------')
+    view.print_message(' Next Birthdays within 14 days')
+    view.print_message('--------------------------------\n')  
     table = hr.list_employees()
-    given_date = view.get_input('\n Date: YYYY-MM-DD  >  ')
-    given_date_days = days_calculator(given_date, table)
-    birthdays = [item[2] for item in table]
-    for date in birthdays:      
-        birth_days = days_calculator(date, table)
-        diff =  birth_days - given_date_days
-        if diff <= 14 and diff >= 0:
-            print(date)
-            
+    given_date = view.get_input('\nDate: YYYY-MM-DD  >  ')
+    os.system('clear')
+    view.print_message('--------------------------------')
+    view.print_message(' Next Birthdays within 14 days')
+    view.print_message('--------------------------------\n') 
+    view.print_message(f'Given date : {given_date}\n')
+    date = hr.next_birthday(given_date, table)
+    # print(date)
+    for lst in table:
+        for i in range(len(date)):
+            if lst[2] == date[i]:
+                view.print_message(f'\n{lst[1]}: {date[i]}')
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
+    
  
-
-
-
-
-    
-next_birthdays()
-    
-    
-
-
-
-        
-
-
-
-    
-
-
 
 
 def count_employees_with_clearance():
@@ -227,4 +204,4 @@ def menu():
             view.print_error_message(err)
 
 
-# menu()
+menu()
