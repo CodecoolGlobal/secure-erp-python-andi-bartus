@@ -81,3 +81,12 @@ def clearence_and_above(table, label):
     return number_of_employees
         
         
+def employees_by_department(table):
+    employees = {}
+    for lst in table:
+        if lst[-2] in employees.keys():
+            employees[lst[-2]] += 1
+        else:
+            employees[lst[-2]] = 1
+    return employees
+       
