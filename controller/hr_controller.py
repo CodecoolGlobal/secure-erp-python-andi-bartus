@@ -2,36 +2,112 @@ import sys, os
 sys.path.append(os.getcwd())
 from model.hr import hr
 from view import terminal as view
+from colorama import*
 
 
 def list_employees():
+    os.system('clear')
     table = hr.list_employees()
     headers = hr.HEADERS
     view.print_table(table, headers)
-    view.print_error_message("Not implemented yet.")
+    view.get_input('\nBack to menu press Enter')
+    
+    
 
 
-list_employees()
+#list_employees()
 
 def add_employee():
-
-    view.print_error_message("Not implemented yet.")
-
-
+    os.system('clear')
+    view.print_message('------------------')
+    view.print_message(' Add new customer')
+    view.print_message('------------------\n')
+    labels = hr.HEADERS[1:]   
+    new_data = view.get_inputs(labels)
+    hr.add_customer_data(new_data)
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
+    
+  
 def update_employee():
-    view.print_error_message("Not implemented yet.")
+    os.system('clear')
+    view.print_message('------------------')
+    view.print_message(' Update customer')
+    view.print_message('------------------\n')
+    table = hr.list_employees()    
+    i_d = view.get_input("Please provide an ID or exit > ")
+    if i_d == 'exit':
+        os.system('clear')
+           
+    else: 
+        while True:
+            for lst in table:
+                if lst[0] == i_d:
+                    update_data = view.get_input("\nWhat do you want to update? 1: name | 2: e-mail | 3: subscribe status | 0: Exit  >  ")
+                    if update_data == "1":
+                        name = view.get_input("\nNew name >  ")
+                        lst[1] = name
+                    if update_data == "2":
+                        e_mail = view.get_input("\nNew e_mail >  ")
+                        lst[2] = e_mail
+                    if update_data == "3":
+                        sub_status = view.get_input("\nNew sunscribe status >  ")
+                        lst[3] = sub_status
+                    if update_data == '0':
+                        display_menu()
+                            
+            hr.update_employee(table)
+            again = view.get_input("\nAnything else to update? Y/N >  ").lower()
+            if again =='y':
+                True
+            else:
+                break
+
+
 
 
 def delete_employee():
-    view.print_error_message("Not implemented yet.")
+    os.system('clear')
+    view.print_message('------------------')
+    view.print_message(' Delete customer')
+    view.print_message('------------------\n')        
+    table = hr.list_employees()
+    i_d = view.get_input("Provide and ID or exit > ")
+    for lst in table:
+        if lst[0] == i_d:
+            table.remove(lst)
+        if i_d == 'exit':
+            os.system('clear')
+            display_menu()
+    hr.update_employee(table)
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
+
+def get_second(item):
+    return item[2]
 
 
 def get_oldest_and_youngest():
-    view.print_error_message("Not implemented yet.")
+    table = hr.list_employees()
+    sorted_table = sorted(table, key=get_second)
+    old_young = [sorted_table[0][1], sorted_table[-1][1]]
+    os.system('clear')
+    view.print_message('-----------------------')
+    view.print_message('Youngest:       Oldest:')    
+    #print(sorted_table[0][1] + ", " + sorted_table[-1][1])
+    print(f"{old_young[0]}             {old_young[1]}")
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
+    
 
 
 def get_average_age():
-    view.print_error_message("Not implemented yet.")
+    table = hr.list_employees()
+    dates = [int(date[2][0:4]) for date in table]
+    average_ages = sum(dates)//len(dates)
+    average_age = 2021 - average_ages
+    print(average_age)
+
 
 
 def next_birthdays():
@@ -72,17 +148,17 @@ def run_operation(option):
 
 
 def display_menu():
-    options = ["Back to main menu",
-               "List employees",
-               "Add new employee",
-               "Update employee",
-               "Remove employee",
-               "Oldest and youngest employees",
-               "Employees average age",
-               "Employees with birthdays in the next two weeks",
-               "Employees with clearance level",
-               "Employee numbers by department"]
-    view.print_menu("Human resources", options)
+    options = ["(0) Back to main menu",
+               "(1) List employees",
+               "(2) Add new employee",
+               "(3) Update employee",
+               "(4) Remove employee",
+               "(5) Oldest and youngest employees",
+               "(6) Employees average age",
+               "(7) Employees with birthdays in the next two weeks",
+               "(8) Employees with clearance level",
+               "(9) Employee numbers by department"]
+    view.print_menu("Human resources", options, Fore.LIGHTCYAN_EX)
 
 
 def menu():
@@ -90,7 +166,10 @@ def menu():
     while operation != '0':
         display_menu()
         try:
-            operation = view.get_input("Select an operation")
+            operation = view.get_input("Select an operation > ")
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
+
+
+menu()
