@@ -26,9 +26,9 @@ def add_transaction():
 
 def update_transaction():
     os.system('clear')
-    view.print_message('------------------')
-    view.print_message(' Update customer')
-    view.print_message('------------------\n')
+    view.print_message('--------------------')
+    view.print_message(' Update transaction')
+    view.print_message('--------------------\n')
     table = sales.list_transactions()    
     i_d = view.get_input("Please provide an ID or exit > ")
     if i_d == 'exit':
@@ -64,9 +64,9 @@ def update_transaction():
 
 def delete_transaction():
     os.system('clear')
-    view.print_message('------------------')
-    view.print_message(' Delete customer')
-    view.print_message('------------------\n')        
+    view.print_message('--------------------')
+    view.print_message(' Delete transaction')
+    view.print_message('--------------------\n')        
     table = sales.list_transactions()
     i_d = view.get_input("Provide and ID or exit > ")
     for lst in table:
