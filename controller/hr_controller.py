@@ -162,8 +162,14 @@ def count_employees_with_clearance():
 
 
 def count_employees_per_department():
+    os.system('clear')
+    view.print_message('---------------')
+    view.print_message(' Departments')
+    view.print_message('---------------\n')  
     table = hr.list_employees()
     print(hr.employees_by_department(table))
+    view.get_input('\nBack to menu press Enter')
+    os.system('clear')
     
 
 
