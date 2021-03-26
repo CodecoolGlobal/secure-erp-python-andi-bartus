@@ -6,8 +6,15 @@ from colorama import*
 init()
 
 
-def list_customers():
+def clear_screen():
+    # -> view, separate function
     os.system('clear')
+
+
+def list_customers():
+    clear_screen()
+
+    # TODO separate modul
     view.print_message('------------------')
     view.print_message('    Customers ')
     view.print_message('------------------\n')
@@ -65,9 +72,7 @@ def update_customer():
                             
             crm.update_costumer(table)
             again = view.get_input("\nAnything else to update? Y/N >  ").lower()
-            if again =='y':
-                True
-            else:
+            if again !='y':
                 break
    
     

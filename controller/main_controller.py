@@ -26,6 +26,7 @@ def display_menu():
     print(Fore.BLUE +ascii_art)
     view.print_menu("Main menu", options, Fore.LIGHTCYAN_EX)
 
+# TODO different module, separate txt
 ascii_art ='''
  __    __   _______     ___   ____    ____  _______ .__   __.     _______ .______      .______   
 |  |  |  | |   ____|   /   \  \   \  /   / |   ____||  \ |  |    |   ____||   _  \     |   _  \  
