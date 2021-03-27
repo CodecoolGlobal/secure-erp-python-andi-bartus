@@ -137,12 +137,12 @@ def next_birthdays():
     view.print_message(' Next Birthdays within 14 days')
     view.print_message('--------------------------------\n') 
     view.print_message(f'Given date : {given_date}\n')
-    date = hr.next_birthday(given_date, table)
+    birthday_in_two_weeks = hr.birthday_in_two_weeks(given_date, table)
     # print(date)
-    for lst in table:
-        for i in range(len(date)):
-            if lst[2] == date[i]:
-                view.print_message(f'\n{lst[1]}: {date[i]}')
+    if len(birthday_in_two_weeks) == 0:
+        view.print_message(" There's no birthdays in two weeks to date!")
+    else:
+        view.print_message(f'{", ".join(birthday_in_two_weeks)}')
     view.get_input('\nBack to menu press Enter')
     os.system('clear')
     

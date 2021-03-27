@@ -36,40 +36,60 @@ def is_leap_year(year):
     return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
 
 
-
-def days_calculator(date):
-    year = int(date[0:4])
-    month = int(date[5:7])
-    day = int(date[-2:])
-    months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 30]
-    leap_months = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 30]
-    if is_leap_year(year) is True:
-        days = sum(leap_months[0:month-1]) + day
-    else:
-        days = sum(months[0:month -1]) + day       
-    return days
-
-def next_birthday(given_date, table):
-    given_year = int(given_date[0:4])
-    given_date_days = days_calculator(given_date)
-    birthdays = [item[2] for item in table]
-    result1 = []
-    result2 = []
-    for date in birthdays:             
-        birth_days = days_calculator(date)
-        diff =  birth_days - given_date_days
-        
-        if birth_days <= 13:
-            given_date_days = given_date_days + birth_days   
-            if given_date_days - given_year <= 14:
-                result1.append(date)
-                result = result1
-            
+def days_counter_to_date_year(given_date):
+    date_year = int(given_date[0:4])
+    reference_year = 1900
+    days_counter = 0
+    for year in range(reference_year, date_year):
+        if is_leap_year(year) is True:
+            days_counter += 366
         else:
-            if diff <= 14 and diff >= 0:
-                result2.append(date)
-                result = result2
-    return result
+            days_counter += 365
+    return days_counter
+
+
+def date_year_days(given_date):
+    year = int(given_date[0:4])
+    month = int(given_date[5:7])
+    day = int(given_date[-2:])
+    simple_year_months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 30]
+    leap_year_months = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 30]
+    date_year_day = 0
+    if is_leap_year(year) is True:
+        if month == 1:
+            date_year_day = day
+        if month == 2:
+            date_year_day = leap_year_months[0] + day
+        if month > 2:
+            date_year_day = sum(leap_year_months[0: month-1]) + day
+    else:
+        if month == 1:
+            date_year_day = day
+        if month == 2:
+            date_year_day = simple_year_months[0] + day
+        if month > 2:
+            date_year_day = sum(simple_year_months[0: month-1]) + day
+    return date_year_day
+
+
+def all_days(date):
+    all_day = days_counter_to_date_year(date) + date_year_days(date)
+    return all_day
+
+
+def present_year_birthday(birth_date, given_date):
+    present_birthday = f"{given_date[0:4]}-{birth_date[5:]}"
+    return present_birthday
+
+
+def birthday_in_two_weeks(given_date, table):
+    names_list = []
+    
+    for lst in table:
+        birth_date = lst[2]
+        if 0 <= (all_days(present_year_birthday(birth_date, given_date)) - all_days(given_date)) % 365 <= 14:
+            names_list.append(lst[1])
+    return names_list
 
  
 def clearence_and_above(table, label):
