@@ -1,5 +1,6 @@
 from colorama import*
 init()
+import os
 
 def print_menu(title, list_options, color):
     print(color +'\n----------------------------------')
@@ -111,3 +112,18 @@ def print_error_message(message):
         message: str - the error message
     """
     pass
+
+
+def clear_screen():
+    os.system('clear')
+
+
+def back_menu():
+    get_input('\nBack to menu press Enter')
+    clear_screen()
+
+
+def function_headers(title):
+    print('\n----------------------------------')
+    print('\n' + title + '\n')
+    print('----------------------------------\n')
