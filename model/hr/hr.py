@@ -84,10 +84,13 @@ def present_year_birthday(birth_date, given_date):
 
 def birthday_in_two_weeks(given_date, table):
     names_list = []
-    
+    if is_leap_year(int(given_date[0:4])) is True:
+        year = 366
+    else:
+        year = 365
     for lst in table:
         birth_date = lst[2]
-        if 0 <= (all_days(present_year_birthday(birth_date, given_date)) - all_days(given_date)) % 365 <= 14:
+        if 0 <= (all_days(present_year_birthday(birth_date, given_date)) - all_days(given_date)) % year <= 14:
             names_list.append(lst[1])
     return names_list
 
