@@ -125,5 +125,5 @@ def back_menu():
 
 def function_headers(title):
     print('\n----------------------------------')
-    print('\n' + title + '\n')
+    print('\n'+ title + '\n')
     print('----------------------------------\n')
