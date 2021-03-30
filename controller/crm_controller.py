@@ -6,23 +6,16 @@ from colorama import*
 init()
 
 
-def clear_screen():
-    # -> view, separate function
-    os.system('clear')
 
 
 def list_customers():
-    clear_screen()
-
-    # TODO separate modul
-    view.print_message('------------------')
-    view.print_message('    Customers ')
-    view.print_message('------------------\n')
+    view.clear_screen()
+    view.function_headers('Customer')
+ 
     table = crm.list_customers()
     headers = crm.HEADERS
     view.print_table(table, headers)
-    view.get_input('\nBack to menu press Enter')
-    os.system('clear')
+    view.back_menu()
     
 
 
@@ -30,29 +23,25 @@ def list_customers():
 
 
 def add_customer():
-    os.system('clear')
-    view.print_message('------------------')
-    view.print_message(' Add new customer')
-    view.print_message('------------------\n')
+    view.clear_screen()
+    view.function_headers('Add new customer')
     labels = crm.HEADERS[1:]   
     new_data = view.get_inputs(labels)
     crm.add_customer_data(new_data)
-    view.get_input('\nBack to menu press Enter')
-    os.system('clear')
+    view.back_menu()
+
     
 
 
 
 def update_customer():
-    os.system('clear')
-    view.print_message('------------------')
-    view.print_message(' Update customer')
-    view.print_message('------------------\n')
+    view.clear_screen()
+    view.function_headers('Update customer')
     table = crm.list_customers()    
     i_d = view.get_input("Please provide an ID or exit > ")
     if i_d == 'exit':
-        os.system('clear')
-           
+        view.clear_screen()
+        
     else: 
         while True:
             for lst in table:
@@ -78,33 +67,25 @@ def update_customer():
     
 
 def delete_customer():
-    os.system('clear')
-    view.print_message('------------------')
-    view.print_message(' Delete customer')
-    view.print_message('------------------\n')        
+    view.clear_screen
+    view.function_headers('Delete costumer')
     table = crm.list_customers()
     i_d = view.get_input("Provide and ID or exit > ")
-    for lst in table:
-        if lst[0] == i_d:
-            table.remove(lst)
-        if i_d == 'exit':
-            os.system('clear')
-            display_menu()
+    crm.delete_customer(i_d, table)
+    display_menu()
     crm.update_costumer(table)
-    view.get_input('\nBack to menu press Enter')
-    os.system('clear')
+    view.back_menu()
     
 
     
 
 
 def get_subscribed_emails():
-    os.system('clear')
+    view.clear_screen()
     table = crm.list_customers()
     subscribed_list = [lst[-2] for lst in table if lst[-1] == '1']
     view.print_menu('Subscribed e-mails', subscribed_list, Fore.LIGHTCYAN_EX)
-    view.get_input('\nBack to menu press Enter')
-    os.system('clear')
+    view.back_menu()
                
 
 
@@ -126,7 +107,7 @@ def run_operation(option):
 
 
 def display_menu():
-    os.system('clear')
+    view.clear_screen()
     options = ["(0) Back to main menu",
                "(1) List customers",
                "(2) Add new customer",

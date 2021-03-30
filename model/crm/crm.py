@@ -28,4 +28,15 @@ def list_customers():
     return table
 
 def update_costumer(table):
+    
     data_manager.write_table_to_file(DATAFILE, table)
+
+def delete_customer(id, table):
+    for lst in table:
+        if lst[0] == id:
+            table.remove(lst)
+        if id == 'exit':
+            os.system('clear')
+
+    
+
